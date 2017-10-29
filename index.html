@@ -23,21 +23,25 @@
 				background-color: #fff;
 				font-family: sans-serif;
 			}
+
 			h1 {
 				font-weight: normal;
 				font-size: 140%;
 			}
+
 			.blockly-div {
 				float: left;
 				width: 750px;
 				height: 550px;
 				margin-right: 10px;
 			}
+
 			.code-div {
 				margin-left: 760px;
 				height: 550px;
 				background-color: #ffd77b;
 			}
+
 			.code-p {
 				padding-top: 10px;
 				padding-left: 10px;
@@ -106,8 +110,8 @@
 
 			function showCode() {
 				Blockly.Solidity.INFINITE_LOOP_TRAP = null;
-				var code = Blockly.Solidity.workspaceToCode(workspacePlayground);
-				document.getElementById("sol_code").innerText = code;
+				document.getElementById("sol_code").innerText =
+					Blockly.Solidity.workspaceToCode(workspacePlayground);
 			}
 		</script>
 	</body>
