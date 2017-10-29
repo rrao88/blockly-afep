@@ -1,2 +1,2 @@
 This is a student project by four master students from the Lucerne University of Applied Sciences and Arts.
-This project is using Google Blockly as the base to create smart contracts in Solidity.
+The concept of the project is to use Google Blocky in order to generate Smart Contracts in Solidity.
