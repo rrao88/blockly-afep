@@ -1,3 +1,7 @@
+'use strict';
+
+goog.provide('Blockly.Solidity.contract');
+
 Blockly.Blocks['contract_main'] = {
 	init: function () {
 		this.appendDummyInput()
