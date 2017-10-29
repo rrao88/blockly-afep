@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Blockly - Smart Contract</title>
+		<script src="../blockly_compressed.js"></script>
+		<script src="../blocks_compressed.js"></script>
+		<script src="../msg/js/en-gb.js"></script>
+
+		<script src="../blocks/contract.js"></script>
+		<script src="../generators/solidity.js"></script>
+		<script src="../generators/solidity/contract.js"></script>
+		<style>
+			body {
+				background-color: #fff;
+				font-family: sans-serif;
+			}
+
+			h1 {
+				font-weight: normal;
+				font-size: 140%;
+			}
+			.blockly-div {
+				float: left;
+				width: 750px;
+				height: 550px;
+				margin-right: 10px;
+			}
+			.code-div {
+				margin-left: 760px;
+				height: 550px;
+				background-color: #ffd77b;
+			}
+			.code-p {
+				padding-top: 10px;
+				padding-left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Kaufvertrag mit Blockly</h1>
+
+		<p>
+			<button onclick="showCode()">Generiere Solidity Code</button>
+		</p>
+
+		<div id="blocklyDiv" class="blockly-div"></div>
+		<div id="codeDiv" class="code-div"><p id="sol_code" class="code-p"></p></div>
+
+		<xml id="toolbox" style="display: none">
+			<category name="Basis">
+				<category name="Control" colour="120">
+					<block type="controls_if"></block>
+					<block type="controls_repeat_ext"></block>
+				</category>
+				<category name="Logic" colour="210">
+					<block type="logic_compare"></block>
+				</category>
+				<category name="Math" colour="230">
+					<block type="math_number"></block>
+					<block type="math_arithmetic"></block>
+				</category>
+				<category name="Text" colour="290">
+					<block type="text"></block>
+					<block type="text_print"></block>
+				</category>
+			</category>
+			<category name="Contract">
+				<block type="contract_main"></block>
+			</category>
+		</xml>
+
+		<script>
+			var workspacePlayground = Blockly.inject('blocklyDiv',
+				{
+					media: '../media/',
+					toolbox: document.getElementById('toolbox'),
+					grid:
+						{
+							spacing: 20,
+							length: 3,
+							colour: '#ccc',
+							snap: true
+						},
+					zoom:
+						{
+							controls: true,
+							wheel: true,
+							startScale: 1.0,
+							maxScale: 3,
+							minScale: 0.3,
+							scaleSpeed: 1.2
+						},
+					trashcan: true
+				});
+
+
+			function showCode() {
+				Blockly.Solidity.INFINITE_LOOP_TRAP = null;
+				var code = Blockly.Solidity.workspaceToCode(workspacePlayground);
+				document.getElementById("sol_code").innerText = code;
+			}
+		</script>
+	</body>
+</html>
