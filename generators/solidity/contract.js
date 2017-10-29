@@ -13,10 +13,13 @@ Blockly.Solidity['contract_main'] = function (block) {
 	var statements_kaufgegenstand = Blockly.Solidity.statementToCode(block, 'KAUFGEGENSTAND');
 	var statements_kaeufer = Blockly.Solidity.statementToCode(block, 'KAEUFER');
 	var statements_lieferant = Blockly.Solidity.statementToCode(block, 'LIEFERANT');
-	// TODO: Assemble Solidity into code variable.
+
 	var code = 'pragma solidity ^0.4.18;\n\n'
 		+ 'contract ' + text_name + ' {\n\n'
-		+ statements_verkaeufer
+		+ statements_verkaeufer + '\n\n'
+		+ statements_kaufgegenstand + '\n\n'
+		+ statements_kaeufer + '\n\n'
+		+ statements_lieferant + '\n\n'
 		+ '}';
 	return code;
 };
