@@ -1,4 +1,9 @@
+/**
+ * @fileoverview Helper functions for generating Solidity for blocks.
+ */
 'use strict';
+
+goog.provide('Blockly.Solidity.contract');
 
 goog.require('Blockly.Solidity');
 
@@ -10,8 +15,8 @@ Blockly.Solidity['contract_main'] = function (block) {
 	var statements_lieferant = Blockly.Solidity.statementToCode(block, 'LIEFERANT');
 	// TODO: Assemble Solidity into code variable.
 	var code = 'pragma solidity ^0.4.18;\n\n'
-		+ 'contract ' + text_name + ' {\n'
+		+ 'contract ' + text_name + ' {\n\n'
 		+ statements_verkaeufer
-		+ '}\n';
+		+ '}';
 	return code;
 };
