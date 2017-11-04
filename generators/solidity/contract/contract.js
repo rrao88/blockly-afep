@@ -78,7 +78,7 @@ Blockly.Solidity['contract_main'] = function (block) {
 
 	function createPurchaseFunction() {
 		return TAB + 'function confirmPurchase() inState(State.Created)\n' +
-			TAB + '  condition(msg.value == (2 * value)) payable public {\n' +
+			TAB + '  condition(msg.value == (2 * price)) payable public {\n' +
 			TAB + TAB + 'buyer = msg.sender;\n' +
 			TAB + TAB + 'state = State.Locked;\n' +
 			TAB + '}\n\n';
@@ -87,7 +87,7 @@ Blockly.Solidity['contract_main'] = function (block) {
 	function createReceiveConfirmationFunction() {
 		return TAB + 'function confirmReceived() onlyBuyer inState(State.Locked) public {\n' +
 			TAB + TAB + 'state = State.Inactive;\n' +
-			TAB + TAB + 'buyer.transfer(value);\n' +
+			TAB + TAB + 'buyer.transfer(price);\n' +
 			TAB + TAB + 'seller.transfer(this.balance);\n' +
 			TAB + '}\n\n';
 	}
