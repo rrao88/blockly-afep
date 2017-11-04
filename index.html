@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>Blockly - Smart Contract</title>
@@ -8,11 +8,11 @@
 		<script src="blocks_compressed.js"></script>
 		<script src="msg/js/en-gb.js"></script>
 
-		<script src="blocks/contract/verkaeufer.js"></script>
+		<script src="blocks/contract/seller.js"></script>
 		<script src="blocks/contract/contract.js"></script>
 		<script src="generators/solidity.js"></script>
 		<script src="generators/solidity/contract/contract.js"></script>
-		<script src="generators/solidity/contract/verkaeufer.js"></script>
+		<script src="generators/solidity/contract/seller.js"></script>
 		<script src="generators/solidity/core/math.js"></script>
 		<script src="generators/solidity/core/text.js"></script>
 		<script src="generators/solidity/core/variables.js"></script>
@@ -50,13 +50,13 @@
 
 		<xml id="toolbox" style="display: none">
 			<category name="Contract">
-				<category name="Vertragsart" colour="120">
+				<category name="Type" colour="120">
 					<block type="contract_main"></block>
 				</category>
-				<category name="Parteien" colour="180">
-					<block type="contract_verkaeufer"></block>
+				<category name="Parties" colour="180">
+					<block type="contract_seller"></block>
 				</category>
-				<category name="Objekte" colour="230">
+				<category name="Objects" colour="230">
 				</category>
 			</category>
 			<category name="Core">
@@ -99,6 +99,8 @@
 
 			function updateGeneratedCode() {
 				Blockly.Solidity.INFINITE_LOOP_TRAP = null;
+
+				//TODO: create Validator function and write validation output to UI in a separate field
 				document.getElementById('codeDiv').value = Blockly.Solidity.workspaceToCode(workspace);
 			}
 

@@ -5,27 +5,27 @@ goog.provide('Blockly.Solidity.contract');
 Blockly.Blocks['contract_main'] = {
 	init: function () {
 		this.appendDummyInput()
-			.appendField("KAUFVERTRAG")
-			.appendField(new Blockly.FieldTextInput("Name des Kaufvertrages"), "NAME");
+			.appendField("SALES CONTRACT")
+			.appendField(new Blockly.FieldTextInput("Name of this sales contract"), "NAME");
 		this.appendDummyInput();
-		this.appendStatementInput("VERKAEUFER")
-			.setCheck("contract_verkaeufer")
+		this.appendStatementInput("SELLER")
+			.setCheck("contract_seller")
 			.setAlign(Blockly.ALIGN_CENTRE)
-			.appendField("Verkäufer");
-		this.appendStatementInput("KAUFGEGENSTAND")
-			.setCheck("contract_gegenstand")
+			.appendField("Seller");
+		this.appendStatementInput("OBJECT")
+			.setCheck("contract_object")
 			.setAlign(Blockly.ALIGN_CENTRE)
-			.appendField("Kaufgegenstand");
-		this.appendStatementInput("KAEUFER")
-			.setCheck("contract_kaeufer")
+			.appendField("Object");
+		this.appendStatementInput("BUYER")
+			.setCheck("contract_buyer")
 			.setAlign(Blockly.ALIGN_CENTRE)
-			.appendField("Käufer");
-		this.appendStatementInput("LIEFERANT")
-			.setCheck("contract_lieferant")
+			.appendField("Buyer");
+		this.appendStatementInput("CARRIER")
+			.setCheck("contract_carrier")
 			.setAlign(Blockly.ALIGN_CENTRE)
-			.appendField("Lieferant");
+			.appendField("Carrier");
 		this.setColour(159);
-		this.setTooltip("Dieses Objekt bildet die Hülle um den Kaufvertrag ab.");
+		this.setTooltip("This object is the mantle of the contract.");
 		this.setHelpUrl("");
 	}
 };
