@@ -1,6 +1,3 @@
-/**
- * @fileoverview Helper functions for generating Solidity for blocks.
- */
 'use strict';
 
 goog.provide('Blockly.Solidity.contract');
@@ -11,7 +8,7 @@ Blockly.Solidity['contract_main'] = function (block) {
 
 	var TAB = '\u00a0\u00a0\u00a0\u00a0';
 
-	var contract_name = block.getFieldValue('NAME');
+	var contract_name = block.getFieldValue('NAME').replace(/\ /g, "_");
 	var statements_seller = Blockly.Solidity.statementToCode(block, 'SELLER');
 	var statements_object = Blockly.Solidity.statementToCode(block, 'OBJECT');
 	var statements_buyer = Blockly.Solidity.statementToCode(block, 'BUYER');
@@ -29,7 +26,7 @@ Blockly.Solidity['contract_main'] = function (block) {
 	}
 
 	function createConstructor() {
-		return TAB + 'function ' + contract_name.replace(/\ /g, "_") + ' payable {\n'
+		return TAB + 'function ' + contract_name + ' payable public {\n'
 			+ TAB + TAB + 'seller = msg.sender;\n'
 			+ TAB + TAB + 'price = msg.value;\n'
 			+ TAB + TAB + 'state = State.Created;\n'
