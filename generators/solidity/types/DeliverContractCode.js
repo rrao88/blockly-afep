@@ -1,5 +1,5 @@
 function getDeliveryContractCode(price, isAbortable){
-
+//TESTcommit
 	var code = "contract DeliverContract is BaseContract {\n" +
 		"\n" +
 		"\tenum State { Created, Locked, InDelivery, Inactive }\n" +
