@@ -14,17 +14,11 @@ Blockly.Solidity['contract_base'] = function (block) {
 	var checkbox_is_abortable = block.getFieldValue('IS_ABORTABLE') == 'TRUE';
 
 	function getSpecificContractCode() {
-		if (dropdown_delivery_options == 'PICK_UP') {
-			var pickupContractCode = getPickupContractVarCode() +
-			getPickupContractConstrCode(price) +
-			getPickupContractConfPurCode() +
-			getPickupContractConfRecCode()
-			
-			return pickupContractCode;
+		if (dropdown_delivery_options == 'PICK_UP') {			
+			return getPickupContractCode(price);
 		} else
-		
 		if (dropdown_delivery_options == 'DELIVER'){
-			return getDeliveryContractCode(price, checkbox_is_abortable);
+			return getDeliveryContractCode(price);
 			}
 	}
 	
@@ -32,8 +26,9 @@ Blockly.Solidity['contract_base'] = function (block) {
 		var extensionsCode = "//Extensions\n\n";
 		
 		if(checkbox_is_abortable){
-			extensionsCode = extensionsCode + getAbortCode();
+			extensionsCode += getAbortCode();
 		}
+		
 		return extensionsCode;
 	}
 

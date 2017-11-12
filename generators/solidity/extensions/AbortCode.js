@@ -1,6 +1,6 @@
 function getAbortCode() {
 	
-	var code = "function abort()\n" +
+	var code = "\tfunction abort()\n" +
 	"\tonlySeller\n" +
 	"\tinState(State.Created) {\n" +
 	"\t\tstate = State.Inactive;\n" +
