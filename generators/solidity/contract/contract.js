@@ -15,15 +15,33 @@ Blockly.Solidity['contract_base'] = function (block) {
 
 	function getSpecificContractCode() {
 		if (dropdown_delivery_options == 'PICK_UP') {
-			return getPickupContractCode(price, checkbox_is_abortable);
+			var pickupContractCode = getPickupContractVarCode() +
+			getPickupContractConstrCode(price) +
+			getPickupContractConfPurCode() +
+			getPickupContractConfRecCode()
+			
+			return pickupContractCode;
+		} else
+		
+		if (dropdown_delivery_options == 'DELIVER'){
+			return getDeliveryContractCode(price, checkbox_is_abortable);
+			}
+	}
+	
+	function getExtensionCode(){
+		var extensionsCode = "//Extensions\n\n";
+		
+		if(checkbox_is_abortable){
+			extensionsCode = extensionsCode + getAbortCode();
 		}
-		return getDeliveryContractCode(price, checkbox_is_abortable);
+		return extensionsCode;
 	}
 
 	var code = 'pragma solidity ^0.4.18;\n\n'
 
 		+ getBaseContractCode(contract_name) + '\n\n'
 		+ getSpecificContractCode() + '\n\n'
+		+ getExtensionCode() + '\n\n'
 		+ '}'
 
 
