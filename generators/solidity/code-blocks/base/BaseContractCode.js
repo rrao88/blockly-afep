@@ -1,4 +1,4 @@
-function getBaseContractCode(contract_name) {
+function getBaseContractCode() {
 
 	var code = "contract BaseContract {\n" +
 		"\tenum State { Created, Locked, Inactive }\n" +
