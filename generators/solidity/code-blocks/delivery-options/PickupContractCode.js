@@ -1,18 +1,20 @@
-function getPickupContractCode(price) {
+function getPickupContractCode(name_id, price) {
 
 	function getPickupContract() {
-		var code = "contract PickupContract is BaseContract {\n\n";
+		var code = "contract PickupContract is BaseContract {\n\n" +
+			"\t//Name or Id of the object on sale is: " + name_id + "\n" +
+			"\n";
 		return code;
 	}
 
 	function getPickupVariables() {
 		var code = "\tenum State { Created, Locked, Inactive }\n" +
 			"\tState public state;\n" +
-			"\n"
+			"\n";
 		return code;
 	}
 
-	function getPickupConstructor(price) {
+	function getPickupConstructor() {
 		var code = "\tfunction PickupContract()\n" +
 			"\tpayable\n" +
 			"\tpublic {\n" +
@@ -21,7 +23,7 @@ function getPickupContractCode(price) {
 			"\t\tstate = State.Created;\n" +
 			"\t\trequire((2 * value) == msg.value);\n" +
 			"\t}\n" +
-			"\n"
+			"\n";
 		return code;
 	}
 
@@ -32,8 +34,7 @@ function getPickupContractCode(price) {
 			"\t\tsuper.purchaseOrderReceived();\n" +
 			"\t\tstate = State.Locked;\n" +
 			"\t}\n" +
-			"\n"
-
+			"\n";
 		return code;
 	}
 
@@ -44,14 +45,13 @@ function getPickupContractCode(price) {
 			"\t\tstate = State.Inactive;\n" +
 			"\t\tsuper.orderReceivedConfirmed();\n" +
 			"\t}\n" +
-			"\n"
-
+			"\n";
 		return code;
 	}
 
 	var code = getPickupContract() +
 	getPickupVariables() +
-	getPickupConstructor(price) +
+	getPickupConstructor() +
 	getPickupFunctionConfirmPurchase() +
 	getPickupFunctionConfirmReceive()
 	return code;

@@ -1,18 +1,20 @@
-function getDeliveryContractCode(price){
+function getDeliveryContractCode(name_id, price) {
 
 	function getDeliveryContract() {
-		var code = "contract DeliverContract is BaseContract {\n\n";
+		var code = "contract DeliverContract is BaseContract {\n\n" +
+			"\t//Name or Id of the object on sale is: " + name_id + "\n" +
+			"\n";
 		return code;
 	}
 
 	function getDeliveryVariables() {
 		var code = "\tenum State { Created, Locked, InDelivery, Inactive }\n" +
 			"\tState public state;\n" +
-			"\n"
+			"\n";
 		return code;
 	}
 
-	function getDeliveryConstructor(price) {
+	function getDeliveryConstructor() {
 		var code = "\tfunction DeliverContract()\n" +
 			"\tpayable public {\n" +
 			"\t\tseller = msg.sender;\n" +
@@ -20,7 +22,7 @@ function getDeliveryContractCode(price){
 			"\t\tstate = State.Created;\n" +
 			"\t\trequire((2 * value) == msg.value);\n" +
 			"\t}\n" +
-			"\n"
+			"\n";
 		return code;
 	}
 
@@ -29,7 +31,7 @@ function getDeliveryContractCode(price){
 			"\t\trequire(msg.sender == buyer);\n" +
 			"\t\t_;\n" +
 			"\t}\n" +
-			"\n"
+			"\n";
 		return code;
 	}
 
@@ -40,8 +42,7 @@ function getDeliveryContractCode(price){
 			"\t\tsuper.purchaseOrderReceived();\n" +
 			"\t\tstate = State.Locked;\n" +
 			"\t}\n" +
-			"\n"
-
+			"\n";
 		return code;
 	}
 
@@ -52,18 +53,17 @@ function getDeliveryContractCode(price){
 			"\t\tstate = State.Inactive;\n" +
 			"\t\tsuper.orderReceivedConfirmed();\n" +
 			"\t}\n" +
-			"\n"
-
+			"\n";
 		return code;
 	}
 
 
 	var code = getDeliveryContract() +
-	getDeliveryVariables() + 
-	getDeliveryConstructor(price) +
-	getDeliveryModifiers() +
-	getDeliveryFunctionConfirmPurchase() + 
-	getDeliveryFunctionConfirmReceive();
-		
+		getDeliveryVariables() +
+		getDeliveryConstructor() +
+		getDeliveryModifiers() +
+		getDeliveryFunctionConfirmPurchase() +
+		getDeliveryFunctionConfirmReceive();
+
 	return code;
 }

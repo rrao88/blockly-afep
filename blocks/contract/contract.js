@@ -6,7 +6,7 @@ Blockly.Blocks['contract_base'] = {
 	init: function() {
 		this.appendDummyInput()
 			.appendField("SALES CONTRACT")
-			.appendField(new Blockly.FieldTextInput("Name of the object on sale"), "NAME");
+			.appendField(new Blockly.FieldTextInput("Name/Id of the object on sale"), "NAME");
 		this.appendDummyInput();
 		this.appendDummyInput()
 			.appendField("Price of Object in Wei:")
