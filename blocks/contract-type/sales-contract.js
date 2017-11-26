@@ -1,6 +1,6 @@
 'use strict';
 
-goog.provide('Blockly.Solidity.contract');
+goog.provide('Blockly.Solidity.sales-contract');
 
 Blockly.Blocks['contract_base'] = {
 	init: function() {

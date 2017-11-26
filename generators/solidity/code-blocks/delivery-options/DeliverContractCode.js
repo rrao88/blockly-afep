@@ -52,8 +52,7 @@ function getDeliveryContractCode(name_id, price) {
 			"\tpublic {\n" +
 			"\t\tstate = State.Inactive;\n" +
 			"\t\tsuper.orderReceivedConfirmed();\n" +
-			"\t}\n" +
-			"\n";
+			"\t}\n";
 		return code;
 	}
 

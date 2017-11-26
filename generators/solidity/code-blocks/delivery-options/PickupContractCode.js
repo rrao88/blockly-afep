@@ -44,15 +44,15 @@ function getPickupContractCode(name_id, price) {
 			"\tpublic {\n" +
 			"\t\tstate = State.Inactive;\n" +
 			"\t\tsuper.orderReceivedConfirmed();\n" +
-			"\t}\n" +
-			"\n";
+			"\t}\n";
 		return code;
 	}
 
 	var code = getPickupContract() +
-	getPickupVariables() +
-	getPickupConstructor() +
-	getPickupFunctionConfirmPurchase() +
-	getPickupFunctionConfirmReceive()
+		getPickupVariables() +
+		getPickupConstructor() +
+		getPickupFunctionConfirmPurchase() +
+		getPickupFunctionConfirmReceive();
+
 	return code;
 }

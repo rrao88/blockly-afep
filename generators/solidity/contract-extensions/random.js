@@ -10,7 +10,7 @@ Blockly.Solidity['random_extension'] = function(block) {
 		"\tonlySeller\n" +
 		"\tinState(State.Created) {\n" +
 		"\t\tstate = State.Inactive;\n" +
-		"\t}\n" + '\n\n' ;
+		"\t}" + '\n\n';
 
 	return code;
 };
