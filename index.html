@@ -9,15 +9,18 @@
 		<script src="msg/js/en-gb.js"></script>
 
 		<script src="blocks/contract/contract.js"></script>
-		<script src="generators/solidity/extensions/AbortCode.js"></script>
-		<script src="generators/solidity/types/BaseContractCode.js"></script>
-		<script src="generators/solidity/types/DeliverContractCode.js"></script>
-		<script src="generators/solidity/types/PickupContractCode.js"></script>
+		<script src="blocks/delivery-options/deliver.js"></script>
+		<script src="blocks/delivery-options/pickup.js"></script>
+		<script src="blocks/contract-extensions/abort.js"></script>
+		<script src="generators/solidity/code-blocks/base/BaseContractCode.js"></script>
+		<script src="generators/solidity/code-blocks/delivery-options/DeliverContractCode.js"></script>
+		<script src="generators/solidity/code-blocks/delivery-options/PickupContractCode.js"></script>
+		<script src="generators/solidity/code-blocks/contract-extensions/AbortCode.js"></script>
 		<script src="generators/solidity.js"></script>
 		<script src="generators/solidity/contract/contract.js"></script>
-		<script src="generators/solidity/core/math.js"></script>
-		<script src="generators/solidity/core/text.js"></script>
-		<script src="generators/solidity/core/variables.js"></script>
+		<script src="generators/solidity/delivery-options/deliver.js"></script>
+		<script src="generators/solidity/delivery-options/pickup.js"></script>
+		<script src="generators/solidity/contract-extensions/abort.js"></script>
 
 		<style>
 			body {
@@ -51,22 +54,17 @@
 		<textarea id="codeDiv" class="code-div"></textarea>
 
 		<xml id="toolbox" style="display: none">
-			<category name="Contract">
-				<category name="Type" colour="120">
-					<block type="contract_base"></block>
-				</category>
+			<category name="Contract Type" colour="120">
+				<block type="contract_base"></block>
 			</category>
-			<category name="Core">
-				<category name="Math" colour="290">
-					<block type="math_number"></block>
-					<block type="math_arithmetic"></block>
-				</category>
-				<category name="Text" colour="345">
-					<block type="text"></block>
-				</category>
-				<category name="Variables" colour="400">
-				</category>
+			<category name="Delivery Options" colour="290">
+				<block type="deliver_option"></block>
+				<block type="pickup_option"></block>
 			</category>
+			<category name="Contract Extensions" colour="345">
+				<block type="abort_extension"></block>
+			</category>
+			//Color: 400
 		</xml>
 
 		<script>
