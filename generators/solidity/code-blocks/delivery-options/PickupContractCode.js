@@ -2,7 +2,7 @@ function getPickupContractCode(name_id, price) {
 
 	function getPickupContract() {
 		var code = "contract PickupContract is BaseContract {\n\n" +
-			"\t//Name or Id of the object on sale is: " + name_id + "\n" +
+			"\t//object on sale: " + name_id + "\n" +
 			"\n";
 		return code;
 	}
@@ -22,6 +22,15 @@ function getPickupContractCode(name_id, price) {
 			"\t\tvalue = " + price + ";\n" +
 			"\t\tstate = State.Created;\n" +
 			"\t\trequire((2 * value) == msg.value);\n" +
+			"\t}\n" +
+			"\n";
+		return code;
+	}
+
+	function getPickupModifiers() {
+		var code = "\tmodifier inState(State _state) {\n" +
+			"\t\trequire(state == _state);\n" +
+			"\t\t_;\n" +
 			"\t}\n" +
 			"\n";
 		return code;
@@ -51,6 +60,7 @@ function getPickupContractCode(name_id, price) {
 	var code = getPickupContract() +
 		getPickupVariables() +
 		getPickupConstructor() +
+		getPickupModifiers() +
 		getPickupFunctionConfirmPurchase() +
 		getPickupFunctionConfirmReceive();
 

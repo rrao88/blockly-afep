@@ -7,16 +7,16 @@ contract PickupContract is BaseContract {
 	enum State { Created, Locked, Inactive }
 	State public state;
 
-	modifier inState(State _state) {
-		require(state == _state);
-		_;
-	}
-
 	function PickupContract() payable public {
 		seller = msg.sender;
 		value = msg.value / 2;
 		state = State.Created;
 		require((2 * value) == msg.value);
+	}
+
+	modifier inState(State _state) {
+		require(state == _state);
+		_;
 	}
 
 	function confirmPurchase() inState(State.Created) payable public {

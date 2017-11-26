@@ -5,11 +5,12 @@ goog.provide('Blockly.Solidity.sales-contract');
 Blockly.Blocks['contract_base'] = {
 	init: function() {
 		this.appendDummyInput()
-			.appendField("SALES CONTRACT")
-			.appendField(new Blockly.FieldTextInput("Name/Id of the object on sale"), "NAME");
-		this.appendDummyInput();
+			.appendField("SALES CONTRACT");
 		this.appendDummyInput()
-			.appendField("Price of Object in Wei:")
+			.appendField("Object on sale:")
+			.appendField(new Blockly.FieldTextInput("Name or ID"), "NAME");
+		this.appendDummyInput()
+			.appendField("Price in Wei:")
 			.appendField(new Blockly.FieldNumber(0, 0, Infinity, 0.01), "PRICE");
 		this.appendStatementInput("DELIVERY OPTIONS")
 			.setCheck("delivery_option")

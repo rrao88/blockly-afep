@@ -2,7 +2,7 @@ function getDeliveryContractCode(name_id, price) {
 
 	function getDeliveryContract() {
 		var code = "contract DeliverContract is BaseContract {\n\n" +
-			"\t//Name or Id of the object on sale is: " + name_id + "\n" +
+			"\t//object on sale: " + name_id + "\n" +
 			"\n";
 		return code;
 	}
@@ -27,7 +27,12 @@ function getDeliveryContractCode(name_id, price) {
 	}
 
 	function getDeliveryModifiers() {
-		var code = "\tmodifier onlyCarrier() {\n" +
+		var code = "modifier inState(State _state) {\n" +
+			"\t\trequire(state == _state);\n" +
+			"\t\t_;\n" +
+			"\t}\n" +
+			"\n" +
+			"\tmodifier onlyCarrier() {\n" +
 			"\t\trequire(msg.sender == buyer);\n" +
 			"\t\t_;\n" +
 			"\t}\n" +
@@ -46,13 +51,18 @@ function getDeliveryContractCode(name_id, price) {
 		return code;
 	}
 
+	function getDeliveryFunctionInTransit() {
+		var code = "\tfunction confirmInTransit() onlyCarrier inState(State.Locked) public {\n" +
+			"\t\tstate = State.InDelivery;\n" +
+			"\t}";
+		return code;
+	}
+
 	function getDeliveryFunctionConfirmReceive() {
-		var code = "\tfunction confirmReceived()\n" +
-			"\tinState(State.Locked)\n" +
-			"\tpublic {\n" +
+		var code = "\tfunction confirmReceived() inState(State.InDelivery) public {\n" +
 			"\t\tstate = State.Inactive;\n" +
 			"\t\tsuper.orderReceivedConfirmed();\n" +
-			"\t}\n";
+			"\t}";
 		return code;
 	}
 
@@ -62,6 +72,7 @@ function getDeliveryContractCode(name_id, price) {
 		getDeliveryConstructor() +
 		getDeliveryModifiers() +
 		getDeliveryFunctionConfirmPurchase() +
+		getDeliveryFunctionInTransit() +
 		getDeliveryFunctionConfirmReceive();
 
 	return code;

@@ -7,16 +7,16 @@ contract DeliverContract is BaseContract {
 	enum State { Created, Locked, InDelivery, Inactive }
 	State public state;
 
-	modifier inState(State _state) {
-		require(state == _state);
-		_;
-	}
-
 	function DeliverContract() payable public {
 		seller = msg.sender;
 		value = msg.value / 2;
 		state = State.Created;
 		require((2 * value) == msg.value);
+	}
+
+	modifier inState(State _state) {
+		require(state == _state);
+		_;
 	}
 
 	modifier onlyCarrier() {
@@ -29,13 +29,13 @@ contract DeliverContract is BaseContract {
 		state = State.Locked;
 	}
 
+	function confirmInTransit() onlyCarrier inState(State.Locked) public {
+		state = State.InDelivery;
+	}
+
 	function confirmReceived() inState(State.InDelivery) public {
 		state = State.Inactive;
 		super.orderReceivedConfirmed();
-	}
-
-	function confirmInTransit() onlyBuyer inState(State.Locked) public {
-		state = State.InDelivery;
 	}
 
 }
