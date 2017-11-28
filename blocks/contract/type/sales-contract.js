@@ -10,7 +10,7 @@ Blockly.Blocks['contract_base'] = {
 			.appendField("Object on sale:")
 			.appendField(new Blockly.FieldTextInput("Name or ID"), "NAME");
 		this.appendDummyInput()
-			.appendField("Price in Wei:")
+			.appendField("Price in Ether:")
 			.appendField(new Blockly.FieldNumber(0, 0, Infinity, 0.01), "PRICE");
 		this.appendStatementInput("DELIVERY OPTIONS")
 			.setCheck("delivery_option")

@@ -19,7 +19,7 @@ function getPickupContractCode(name_id, price) {
 			"\tpayable\n" +
 			"\tpublic {\n" +
 			"\t\tseller = msg.sender;\n" +
-			"\t\tvalue = " + price + ";\n" +
+			"\t\tvalue = " + price + "* 10**18; //Convert from Ether to Wei\n" +
 			"\t\tstate = State.Created;\n" +
 			"\t\trequire((2 * value) == msg.value);\n" +
 			"\t}\n" +
