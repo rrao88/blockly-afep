@@ -19,14 +19,14 @@ contract PickupContract is BaseContract {
 		_;
 	}
 
-	function confirmPurchase() inState(State.Created) payable public {
+	function confirmOrderPlaced() inState(State.Created) payable public {
 		super.purchaseOrderReceived();
 		state = State.Locked;
 	}
 
-	function confirmReceived() inState(State.Locked) public {
+	function confirmOrderCompleted() inState(State.Locked) public {
 		state = State.Inactive;
-		super.orderReceivedConfirmed();
+		super.purchaseOrderCompleted();
 	}
 
 }

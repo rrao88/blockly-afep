@@ -26,7 +26,7 @@ function getBaseContractCode() {
 		"\t\tbuyer = msg.sender;\n" +
 		"\t}\n" +
 		"\n" +
-		"\tfunction orderReceivedConfirmed() onlyBuyer public {\n" +
+		"\tfunction purchaseOrderCompleted() onlyBuyer public {\n" +
 		"\t\tbuyer.transfer(value);\n" +
 		"\t\tseller.transfer(this.balance);\n" +
 		"\t}\n" +

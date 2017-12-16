@@ -36,8 +36,8 @@ function getPickupContractCode(name_id, price) {
 		return code;
 	}
 
-	function getPickupFunctionConfirmPurchase() {
-		var code = "\tfunction confirmPurchase()\n" +
+	function getPickupFunctionConfirmOrderPlaced() {
+		var code = "\tfunction confirmOrderPlaced()\n" +
 			"\tinState(State.Created)\n" +
 			"\tpayable public {\n" +
 			"\t\tsuper.purchaseOrderReceived();\n" +
@@ -47,12 +47,12 @@ function getPickupContractCode(name_id, price) {
 		return code;
 	}
 
-	function getPickupFunctionConfirmReceive() {
-		var code = "\tfunction confirmReceived()\n" +
+	function getPickupFunctionConfirmOrderCompleted() {
+		var code = "\tfunction confirmOrderCompleted()\n" +
 			"\tinState(State.Locked)\n" +
 			"\tpublic {\n" +
 			"\t\tstate = State.Inactive;\n" +
-			"\t\tsuper.orderReceivedConfirmed();\n" +
+			"\t\tsuper.purchaseOrderCompleted();\n" +
 			"\t}\n";
 		return code;
 	}
@@ -61,8 +61,8 @@ function getPickupContractCode(name_id, price) {
 		getPickupVariables() +
 		getPickupConstructor() +
 		getPickupModifiers() +
-		getPickupFunctionConfirmPurchase() +
-		getPickupFunctionConfirmReceive();
+		getPickupFunctionConfirmOrderPlaced() +
+		getPickupFunctionConfirmOrderCompleted();
 
 	return code;
 }

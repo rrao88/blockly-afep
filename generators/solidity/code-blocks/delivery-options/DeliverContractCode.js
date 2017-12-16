@@ -43,13 +43,13 @@ function getDeliveryContractCode(name_id, price, carrier_address) {
 	}
 
 	function getDeliveryEvents() {
-		var code = "\tevent DeliverObject();\n\n";
+		var code = "\tevent DeliverOrder();\n\n";
 		return code;
 	}
 
-	function getDeliveryFunctionConfirmPurchase() {
-		var code = "\tfunction confirmPurchase() inState(State.Created) payable public {\n" +
-			"\t\tDeliverObject();\n" +
+	function getDeliveryFunctionConfirmOrderPlaced() {
+		var code = "\tfunction confirmOrderPlaced() inState(State.Created) payable public {\n" +
+			"\t\tDeliverOrder();\n" +
 			"\t\tsuper.purchaseOrderReceived();\n" +
 			"\t\tstate = State.Locked;\n" +
 			"\t}\n" +
@@ -57,17 +57,17 @@ function getDeliveryContractCode(name_id, price, carrier_address) {
 		return code;
 	}
 
-	function getDeliveryFunctionInTransit() {
-		var code = "\tfunction confirmInTransit() onlyCarrier inState(State.Locked) public {\n" +
+	function getDeliveryFunctionConfirmOrderInTransit() {
+		var code = "\tfunction confirmOrderInTransit() onlyCarrier inState(State.Locked) public {\n" +
 			"\t\tstate = State.InDelivery;\n" +
 			"\t}\n\n";
 		return code;
 	}
 
-	function getDeliveryFunctionConfirmReceive() {
-		var code = "\tfunction confirmReceived() inState(State.InDelivery) public {\n" +
+	function getDeliveryFunctionConfirmOrderCompleted() {
+		var code = "\tfunction confirmOrderCompleted() inState(State.InDelivery) public {\n" +
 			"\t\tstate = State.Inactive;\n" +
-			"\t\tsuper.orderReceivedConfirmed();\n" +
+			"\t\tsuper.purchaseOrderCompleted();\n" +
 			"\t}";
 		return code;
 	}
@@ -78,9 +78,9 @@ function getDeliveryContractCode(name_id, price, carrier_address) {
 		getDeliveryConstructor() +
 		getDeliveryModifiers() +
 		getDeliveryEvents() +
-		getDeliveryFunctionConfirmPurchase() +
-		getDeliveryFunctionInTransit() +
-		getDeliveryFunctionConfirmReceive();
+		getDeliveryFunctionConfirmOrderPlaced() +
+		getDeliveryFunctionConfirmOrderInTransit() +
+		getDeliveryFunctionConfirmOrderCompleted();
 
 	return code;
 }

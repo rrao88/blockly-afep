@@ -26,21 +26,21 @@ contract DeliverContract is BaseContract {
 		_;
 	}
 
-	event DeliverObject();
+	event DeliverOrder();
 
-	function confirmPurchase() inState(State.Created) payable public {
-		DeliverObject();
+	function confirmOrderPlaced() inState(State.Created) payable public {
+		DeliverOrder();
 		super.purchaseOrderReceived();
 		state = State.Locked;
 	}
 
-	function confirmInTransit() onlyCarrier inState(State.Locked) public {
+	function confirmOrderInTransit() onlyCarrier inState(State.Locked) public {
 		state = State.InDelivery;
 	}
 
-	function confirmReceived() inState(State.InDelivery) public {
+	function confirmOrderCompleted() inState(State.InDelivery) public {
 		state = State.Inactive;
-		super.orderReceivedConfirmed();
+		super.purchaseOrderCompleted();
 	}
 
 }

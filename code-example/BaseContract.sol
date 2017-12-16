@@ -27,7 +27,7 @@ contract BaseContract {
 		buyer = msg.sender;
 	}
 
-	function orderReceivedConfirmed() onlyBuyer public {
+	function purchaseOrderCompleted() onlyBuyer public {
 		buyer.transfer(value);
 		seller.transfer(this.balance);
 	}

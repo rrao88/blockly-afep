@@ -5,7 +5,7 @@ goog.provide('Blockly.Solidity.abort');
 Blockly.Blocks['abort_extension'] = {
 	init: function() {
 		this.appendDummyInput()
-			.appendField("is abortable");
+			.appendField("is abortable by seller");
 		this.setPreviousStatement(true, "contract_extension");
 		this.setNextStatement(true, "contract_extension");
 		this.setColour(270);
