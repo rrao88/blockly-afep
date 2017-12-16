@@ -1,4 +1,4 @@
-function getDeliveryContractCode(name_id, price) {
+function getDeliveryContractCode(name_id, price, carrier_address) {
 
 	function getDeliveryContract() {
 		var code = "contract DeliverContract is BaseContract {\n\n" +
@@ -10,6 +10,8 @@ function getDeliveryContractCode(name_id, price) {
 	function getDeliveryVariables() {
 		var code = "\tenum State { Created, Locked, InDelivery, Inactive }\n" +
 			"\tState public state;\n" +
+			"\n" +
+			"\taddress public carrier = " + carrier_address + "; //Ethereum address of the carrier\n" +
 			"\n";
 		return code;
 	}
@@ -27,23 +29,27 @@ function getDeliveryContractCode(name_id, price) {
 	}
 
 	function getDeliveryModifiers() {
-		var code = "modifier inState(State _state) {\n" +
+		var code = "\tmodifier inState(State _state) {\n" +
 			"\t\trequire(state == _state);\n" +
 			"\t\t_;\n" +
 			"\t}\n" +
 			"\n" +
 			"\tmodifier onlyCarrier() {\n" +
-			"\t\trequire(msg.sender == buyer);\n" +
+			"\t\trequire(msg.sender == carrier);\n" +
 			"\t\t_;\n" +
 			"\t}\n" +
 			"\n";
 		return code;
 	}
 
+	function getDeliveryEvents() {
+		var code = "\tevent DeliverObject();\n\n";
+		return code;
+	}
+
 	function getDeliveryFunctionConfirmPurchase() {
-		var code = "\tfunction confirmPurchase()\n" +
-			"\tinState(State.Created)\n" +
-			"\tpayable public {\n" +
+		var code = "\tfunction confirmPurchase() inState(State.Created) payable public {\n" +
+			"\t\tDeliverObject();\n" +
 			"\t\tsuper.purchaseOrderReceived();\n" +
 			"\t\tstate = State.Locked;\n" +
 			"\t}\n" +
@@ -54,7 +60,7 @@ function getDeliveryContractCode(name_id, price) {
 	function getDeliveryFunctionInTransit() {
 		var code = "\tfunction confirmInTransit() onlyCarrier inState(State.Locked) public {\n" +
 			"\t\tstate = State.InDelivery;\n" +
-			"\t}";
+			"\t}\n\n";
 		return code;
 	}
 
@@ -71,6 +77,7 @@ function getDeliveryContractCode(name_id, price) {
 		getDeliveryVariables() +
 		getDeliveryConstructor() +
 		getDeliveryModifiers() +
+		getDeliveryEvents() +
 		getDeliveryFunctionConfirmPurchase() +
 		getDeliveryFunctionInTransit() +
 		getDeliveryFunctionConfirmReceive();

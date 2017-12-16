@@ -7,6 +7,8 @@ contract DeliverContract is BaseContract {
 	enum State { Created, Locked, InDelivery, Inactive }
 	State public state;
 
+	address public carrier = 0; //Ethereum address of the carrier
+
 	function DeliverContract() payable public {
 		seller = msg.sender;
 		value = msg.value / 2;
@@ -20,11 +22,14 @@ contract DeliverContract is BaseContract {
 	}
 
 	modifier onlyCarrier() {
-		require(msg.sender == buyer);
+		require(msg.sender == carrier);
 		_;
 	}
 
+	event DeliverObject();
+
 	function confirmPurchase() inState(State.Created) payable public {
+		DeliverObject();
 		super.purchaseOrderReceived();
 		state = State.Locked;
 	}
