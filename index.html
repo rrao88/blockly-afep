@@ -9,8 +9,12 @@
 		<script src="msg/js/en-gb.js"></script>
 
 		<script src="blocks/contract/type/sales-contract.js"></script>
+		<script src="blocks/contract/type/satisloh-contract.js"></script>
 		<script src="blocks/contract/delivery-options/deliver.js"></script>
 		<script src="blocks/contract/delivery-options/pickup.js"></script>
+		<script src="blocks/contract/payment-options/payment-306010-option.js"></script>
+		<script src="blocks/contract/payment-options/payment-100upfront-option.js"></script>
+		<script src="blocks/contract/payment-options/payment-100atend-option.js"></script>
 		<script src="blocks/contract/extensions/abort.js"></script>
 		<script src="generators/solidity/code-blocks/base/BaseContractCode.js"></script>
 		<script src="generators/solidity/code-blocks/delivery-options/DeliverContractCode.js"></script>
@@ -54,17 +58,25 @@
 		<textarea id="codeDiv" class="code-div"></textarea>
 
 		<xml id="toolbox" style="display: none">
-			<category name="Types" colour="120">
+			<category name="Types" colour="45">
 				<block type="contract_base"></block>
+				<block type="satisloh_base"></block>
 			</category>
-			<category name="Delivery Options" colour="290">
+			<category name="Delivery Options" colour="120">
 				<block type="deliver_option"></block>
 				<block type="pickup_option"></block>
 			</category>
-			<category name="Extensions" colour="345">
+			<category name="Shipping Options" colour="290">
+				<block type="deliver_option"></block>
+			</category>
+			<category name="Payment Options" colour="345">
+				<block type="payment_306010_option"></block>
+				<block type="payment_100upfront_option"></block>
+				<block type="payment_100atend_option"></block>
+			</category>
+			<category name="Extensions" colour="400">
 				<block type="abort_extension"></block>
 			</category>
-			//Color: 400
 		</xml>
 
 		<script>
