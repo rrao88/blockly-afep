@@ -8,7 +8,7 @@ Blockly.Blocks['abort_extension'] = {
 			.appendField("is abortable by seller");
 		this.setPreviousStatement(true, "contract_extension");
 		this.setNextStatement(true, "contract_extension");
-		this.setColour(270);
+		this.setColour(40);
 		this.setTooltip("This makes the contract abortable by the seller.");
 		this.setHelpUrl("");
 	}

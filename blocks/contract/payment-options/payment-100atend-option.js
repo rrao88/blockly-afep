@@ -11,7 +11,7 @@ Blockly.Blocks['payment_100atend_option'] = {
 			.appendField("/")
 			.appendField("100");
 		this.setPreviousStatement(true, "satisloh_payment_option");
-		this.setColour(270);
+		this.setColour(345);
 		this.setTooltip("\"This object represents the installment payment option where the whole amount is paid at the end.\"");
 		this.setHelpUrl("");
 	}
