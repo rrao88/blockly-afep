@@ -47,7 +47,7 @@ contract SatislohContract {
 	function confirmOrderPlaced() onlyBuyer inState(State.Created) condition(msg.value = (value * 0.3)) payable public {
 		buyer = msg.sender;
 		state = State.Ordered;
-		buyer.transfer(msg.value);
+		seller.transfer(this.balance);
 	}
 
 	function confirmOrderProduced() onlySeller inState(State.Ordered) public {
@@ -57,7 +57,7 @@ contract SatislohContract {
 	}
 
 	function confirmSecondInstallmentPaid() onlySeller inState(State.Produced) condition(msg.value = (value * 0.6)) public payable {
-		buyer.transfer(msg.value);
+		seller.transfer(this.balance);
 	}
 
 	function confirmOrderInDelivery() onlyCarrier inState(State.Produced) public {
@@ -69,9 +69,8 @@ contract SatislohContract {
 	}
 
 	function confirmOrderCompleted() onlyBuyer inState(State.Received) condition(msg.value = (value * 0.1)) public {
-		buyer.transfer(msg.value);
+		seller.transfer(this.balance);
 		state = State.Inactive;
 	}
-
 
 }
