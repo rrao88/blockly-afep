@@ -11,7 +11,7 @@ Blockly.Blocks['payment_100upfront_option'] = {
 			.appendField("/")
 			.appendField("0");
 		this.setPreviousStatement(true, "satisloh_payment_option");
-		this.setColour(345);
+		this.setColour(290);
 		this.setTooltip("\"This object represents the upfront payment option where the whole amount is paid at the start.\"");
 		this.setHelpUrl("");
 	}

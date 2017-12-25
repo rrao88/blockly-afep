@@ -12,23 +12,30 @@
 		<script src="blocks/contract/type/satisloh-contract.js"></script>
 		<script src="blocks/contract/delivery-options/deliver.js"></script>
 		<script src="blocks/contract/delivery-options/pickup.js"></script>
+		<script src="blocks/contract/extensions/abort.js"></script>
+		<script src="blocks/contract/extensions/installation-required.js"></script>
 		<script src="blocks/contract/payment-options/payment-306010-option.js"></script>
 		<script src="blocks/contract/payment-options/payment-100upfront-option.js"></script>
 		<script src="blocks/contract/payment-options/payment-100atend-option.js"></script>
-		<script src="blocks/contract/shipping-options/satisloh-carrier-option.js"></script>
-		<script src="blocks/contract/shipping-options/buyer-carrier-option.js"></script>
-		<script src="blocks/contract/shipping-options/buyer-pickup-option.js"></script>
-		<script src="blocks/contract/extensions/abort.js"></script>
-		<script src="blocks/contract/extensions/installation-required.js"></script>
+		<script src="generators/solidity/common/enums.js"></script>
 		<script src="generators/solidity/code-blocks/base/BaseContractCode.js"></script>
+		<script src="generators/solidity/code-blocks/base/SatislohBaseContractCode.js"></script>
 		<script src="generators/solidity/code-blocks/delivery-options/DeliverContractCode.js"></script>
 		<script src="generators/solidity/code-blocks/delivery-options/PickupContractCode.js"></script>
 		<script src="generators/solidity/code-blocks/contract-extensions/AbortCode.js"></script>
+		<script src="generators/solidity/code-blocks/payment-options/ThreeInstallmentPaymentContractCode.js"></script>
+		<script src="generators/solidity/code-blocks/payment-options/UpfrontPaymentContractCode.js"></script>
+		<script src="generators/solidity/code-blocks/payment-options/AtEndPaymentContractCode.js"></script>
 		<script src="generators/solidity.js"></script>
+		<script src="generators/solidity/contract/extensions/abort.js"></script>
+		<script src="generators/solidity/contract/extensions/installation-required.js"></script>
 		<script src="generators/solidity/contract/type/sales-contract.js"></script>
+		<script src="generators/solidity/contract/type/satisloh-contract.js"></script>
 		<script src="generators/solidity/contract/delivery-options/deliver.js"></script>
 		<script src="generators/solidity/contract/delivery-options/pickup.js"></script>
-		<script src="generators/solidity/contract/extensions/abort.js"></script>
+		<script src="generators/solidity/contract/payment-options/threeInstallmentPayment.js"></script>
+		<script src="generators/solidity/contract/payment-options/upfrontPayment.js"></script>
+		<script src="generators/solidity/contract/payment-options/atEndPayment.js"></script>
 
 		<style>
 			body {
@@ -70,17 +77,12 @@
 				<block type="deliver_option"></block>
 				<block type="pickup_option"></block>
 			</category>
-			<category name="Shipping Options" colour="290">
-				<block type="satisloh_carrier_option"></block>
-				<block type="buyer_carrier_option"></block>
-				<block type="buyer_pickup_option"></block>
-			</category>
-			<category name="Payment Options" colour="345">
+			<category name="Payment Options" colour="290">
 				<block type="payment_306010_option"></block>
 				<block type="payment_100upfront_option"></block>
 				<block type="payment_100atend_option"></block>
 			</category>
-			<category name="Extensions" colour="40">
+			<category name="Extensions" colour="345">
 				<block type="abort_extension"></block>
 				<block type="installation_required_extension"></block>
 			</category>
