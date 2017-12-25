@@ -11,7 +11,7 @@ Blockly.Blocks['satisloh_base'] = {
 			.appendField(new Blockly.FieldTextInput("id of the offer"), "offer_id");
 		this.appendDummyInput()
 			.appendField("Price in Ether:")
-			.appendField(new Blockly.FieldNumber(0, 0, Infinity, 0.0), "price");
+			.appendField(new Blockly.FieldNumber(0, 0, Infinity, 1), "price");
 		this.appendDummyInput()
 			.appendField("Shipping Options:")
 			.appendField(new Blockly.FieldDropdown([["Satisloh Carrier","satisloh_carrier"], ["Buyer Carrier","buyer_carrier"], ["Buyer Pickup","buyer_pickup"]]), "shipping");
