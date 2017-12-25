@@ -5,7 +5,6 @@ function getSatislohBaseContractCode() {
 		"\taddress public seller;\n" +
 		"\taddress public buyer;\n" +
 		"\taddress public carrier;\n" +
-		"\tuint public value;\n" +
 		"\n" +
 		"\tmodifier onlyBuyer() {\n" +
 		"\t\trequire(msg.sender == buyer);\n" +
