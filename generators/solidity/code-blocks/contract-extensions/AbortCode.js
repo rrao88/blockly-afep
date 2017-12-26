@@ -1,6 +1,6 @@
 function getAbortCode() {
 	
-	var code = "\tfunction abort()\n" +
+	var code = "\tfunction confirmOrderAborted()\n" +
 	"\tonlySeller\n" +
 	"\tinState(State.Created)\n" +
 	"\tpublic {\n" +

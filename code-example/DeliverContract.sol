@@ -34,7 +34,7 @@ contract DeliverContract is BaseContract {
 		state = State.Locked;
 	}
 
-	function confirmOrderInTransit() onlyCarrier inState(State.Locked) public {
+	function confirmOrderInDelivery() onlyCarrier inState(State.Locked) public {
 		state = State.InDelivery;
 	}
 

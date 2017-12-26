@@ -57,8 +57,8 @@ function getDeliveryContractCode(name_id, price, carrier_address) {
 		return code;
 	}
 
-	function getDeliveryFunctionConfirmOrderInTransit() {
-		var code = "\tfunction confirmOrderInTransit() onlyCarrier inState(State.Locked) public {\n" +
+	function getDeliveryFunctionConfirmOrderInDelivery() {
+		var code = "\tfunction confirmOrderInDelivery() onlyCarrier inState(State.Locked) public {\n" +
 			"\t\tstate = State.InDelivery;\n" +
 			"\t}\n\n";
 		return code;
@@ -79,7 +79,7 @@ function getDeliveryContractCode(name_id, price, carrier_address) {
 		getDeliveryModifiers() +
 		getDeliveryEvents() +
 		getDeliveryFunctionConfirmOrderPlaced() +
-		getDeliveryFunctionConfirmOrderInTransit() +
+		getDeliveryFunctionConfirmOrderInDelivery() +
 		getDeliveryFunctionConfirmOrderCompleted();
 
 	return code;
