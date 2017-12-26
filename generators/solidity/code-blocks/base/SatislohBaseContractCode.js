@@ -35,6 +35,8 @@ function getSatislohBaseContractCode() {
 		"\n" +
 		"\tfunction orderCompleted() onlyBuyer view internal {}\n" +
 		"\n" +
+		"\tfunction orderAborted() onlySeller view internal {}\n" +
+		"\n" +
 		"}";
 
 	return code;

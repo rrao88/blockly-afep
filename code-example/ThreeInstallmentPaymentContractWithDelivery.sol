@@ -67,4 +67,9 @@ contract ThreeInstallmentPaymentContractWithDelivery is SatislohBaseContract {
 		state = State.Inactive;
 	}
 
+	function confirmOrderAborted() inState(State.Created) public {
+		super.orderAborted();
+		state = State.Inactive;
+	}
+
 }

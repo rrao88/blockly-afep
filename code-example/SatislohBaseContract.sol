@@ -37,4 +37,6 @@ contract SatislohBaseContract {
 
 	function orderCompleted() onlyBuyer view internal {}
 
+	function orderAborted() onlySeller view internal {}
+
 }
