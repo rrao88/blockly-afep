@@ -17,7 +17,7 @@ Blockly.Blocks['contract_base'] = {
 			.appendField("Delivery Option:");
 		this.appendStatementInput("CONTRACT EXTENSIONS")
 			.setCheck("contract_extension")
-			.appendField("Contract Extensions:");
+			.appendField("Contract Options:");
 		this.setColour(160);
 		this.setTooltip("This object is the mantle of the contract.");
 		this.setHelpUrl("");

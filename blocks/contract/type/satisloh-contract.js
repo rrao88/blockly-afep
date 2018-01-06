@@ -20,7 +20,7 @@ Blockly.Blocks['satisloh_base'] = {
 			.appendField("Payment Option:");
 		this.appendStatementInput("EXTENSIONS")
 			.setCheck("satisloh_extension")
-			.appendField("Contract Extensions:");
+			.appendField("Contract Options:");
 		this.setColour(160);
 		this.setTooltip("This object is the mantle of the satisloh machine contract.");
 		this.setHelpUrl("");
